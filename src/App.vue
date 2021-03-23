@@ -1,7 +1,7 @@
 <template>
 <h1 class="text-5xl text-center font-bold">Memory Game</h1>
 <div class="grid grid-cols-4 gap-4 p-8 container mx-auto">
-<card @choose="openCard" v-for="name, i in names" :key="name" :isOpen="openCards.includes(i)" :index="i" :text="name" ></card>
+<card @choose="openCard" v-for="name, i in names" :key="name" :isOpen="choosedCards.includes(i)" :index="i" :text="name" ></card>
 </div>
 </template>
 
@@ -15,11 +15,11 @@ export default defineComponent({
     Card
   },
   setup() {
-    const { names, openCard, openCards } = useMemoryCard()
+    const { names, openCard, choosedCards } = useMemoryCard()
     return {
       names,
       openCard,
-      openCards
+      choosedCards,
     }
   }
 })

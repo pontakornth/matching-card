@@ -23,12 +23,13 @@ const useMemoryCards = () => {
     const firstArray: string[] = shuffle(nameArray)
     const secondArray: string[] = shuffle(nameArray)
     const names = reactive([...firstArray, ...secondArray])
-    const openCards = reactive<number[]>([])
-    const openCard = (index: number) => openCards.push(index)
+    const choosedCards = reactive<number[]>([])
+    const revealedCards = reactive<string[]>([])
+    const openCard = (index: number) => choosedCards.push(index)
     return {
       names,
       openCard,
-      openCards
+      choosedCards
     }
 }
 
