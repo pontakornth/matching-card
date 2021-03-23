@@ -22,7 +22,7 @@ const useMemoryCards = () => {
     const nameArray = ["Asta", "Yuno", "Noelle", "Most", "Yami", "Cream", "Shadow", "Licht"]
     const firstArray: string[] = shuffle(nameArray)
     const secondArray: string[] = shuffle(nameArray)
-    const names = reactive([...firstArray, ...secondArray])
+    const names = reactive(shuffle([...firstArray, ...secondArray]))
     const choosedCards = reactive<number[]>([])
     const revealedCards = reactive<string[]>([])
     const openCard = (index: number) => choosedCards.push(index)
