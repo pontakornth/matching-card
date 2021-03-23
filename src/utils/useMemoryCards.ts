@@ -29,7 +29,8 @@ const useMemoryCards = () => {
     return {
       names,
       openCard,
-      choosedCards
+      choosedCards,
+      revealedCards
     }
 }
 
