@@ -34,6 +34,7 @@ const useMemoryCards = () => {
       rawNames.names = getCards(nameArray)
       choosedCards.splice(0, choosedCards.length)
       revealedCards.splice(0, revealedCards.length)
+      isOver.value = false
     }
     watch(revealedCards, (newValue) => {
       if (newValue.length === nameArray.length) {
@@ -54,6 +55,7 @@ const useMemoryCards = () => {
       openCard,
       choosedCards,
       revealedCards,
+      isOver,
       resetGame,
     }
 }

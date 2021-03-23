@@ -1,6 +1,6 @@
 <template>
-<h1 class="text-5xl text-center font-bold">Memory Game</h1>
-<div class="grid grid-cols-4 gap-4 p-8 container mx-auto">
+<h1 class="heading">Memory Game</h1>
+<div class="card-grid">
 <card 
   @choose="openCard" 
   v-for="name, i in names" 
@@ -10,7 +10,8 @@
   :index="i" 
   :text="name" />
 </div>
-<button @click="resetGame" class="px-4 py-2 mx-auto block border shadow-md text-red-500 bg-white">Reset</button>
+<span v-if="isOver" class="block text-center mb-8 text-gray-400">You passed.</span>
+<button @click="resetGame" class="reset-button">Reset</button>
 </template>
 
 <script lang="ts">
@@ -23,12 +24,13 @@ export default defineComponent({
     Card
   },
   setup() {
-    const { names, openCard, choosedCards, revealedCards, resetGame } = useMemoryCard()
+    const { names, openCard, choosedCards, revealedCards, isOver, resetGame } = useMemoryCard()
     return {
       names,
       openCard,
       choosedCards,
       revealedCards,
+      isOver,
       resetGame,
     }
   }
@@ -38,5 +40,17 @@ export default defineComponent({
 <style>
 body {
   @apply bg-gray-100 p-8;
+}
+.heading {
+  @apply text-5xl text-center font-bold;
+}
+.card-grid {
+  @apply grid grid-cols-4 gap-4 p-8 container mx-auto;
+}
+.reset-button {
+  @apply px-4 py-2 mx-auto block border shadow-md text-red-500 bg-white;
+  &:hover {
+    @apply bg-red-600 text-white;
+  }
 }
 </style>

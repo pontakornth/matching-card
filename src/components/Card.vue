@@ -1,5 +1,5 @@
 <template>
-    <button @click="handleClick" :class="`text-center shadow-md border ${isRevealed ? 'bg-blue-500' : 'bg-red-500'} text-white border rounded p-4`">
+    <button :disabled="isOpen || isRevealed" @click="handleClick" :class="`text-center shadow-md border ${isRevealed ? 'bg-blue-500' : 'bg-red-500'} text-white border rounded p-4`">
         <span v-if="isOpen || isRevealed">{{text}}</span>
         <span v-else>XXX</span>
     </button>
