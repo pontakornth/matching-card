@@ -5,7 +5,8 @@
   @choose="openCard" 
   v-for="name, i in names" 
   :key="name" 
-  :isOpen="choosedCards.includes(i) || revealedCards.includes(name)" 
+  :isOpen="choosedCards.includes(i)" 
+  :isRevealed="revealedCards.includes(name)"
   :index="i" 
   :text="name" />
 </div>

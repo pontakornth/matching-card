@@ -1,6 +1,6 @@
 <template>
-    <button @click="handleClick" class="text-center shadow-md border bg-red-500 text-white border rounded p-4">
-        <span v-if="isOpen">{{text}}</span>
+    <button @click="handleClick" :class="`text-center shadow-md border ${isRevealed ? 'bg-blue-500' : 'bg-red-500'} text-white border rounded p-4`">
+        <span v-if="isOpen || isRevealed">{{text}}</span>
         <span v-else>XXX</span>
     </button>
 </template>
@@ -18,6 +18,12 @@ export default defineComponent({
         isOpen: {
             type: Boolean,
             default: false,
+            required: true,
+        },
+        isRevealed: {
+            type: Boolean,
+            default: false,
+            required: true,
         },
         index: {
             type: Number,

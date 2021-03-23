@@ -27,7 +27,6 @@ const useMemoryCards = () => {
     const revealedCards = reactive<string[]>([])
     const openCard = (index: number) => choosedCards.push(index)
     watch(choosedCards, (newValue) => {
-        console.log([...newValue])
         if (newValue.length == 2) {
             if (names[newValue[0]] === names[newValue[1]]) {
                 revealedCards.push(names[newValue[0]])
