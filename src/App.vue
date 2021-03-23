@@ -4,12 +4,13 @@
 <card 
   @choose="openCard" 
   v-for="name, i in names" 
-  :key="name" 
+  :key="i" 
   :isOpen="choosedCards.includes(i)" 
   :isRevealed="revealedCards.includes(name)"
   :index="i" 
   :text="name" />
 </div>
+<button @click="resetGame" class="px-4 py-2 mx-auto block border shadow-md text-red-500 bg-white">Reset</button>
 </template>
 
 <script lang="ts">
@@ -22,12 +23,13 @@ export default defineComponent({
     Card
   },
   setup() {
-    const { names, openCard, choosedCards, revealedCards } = useMemoryCard()
+    const { names, openCard, choosedCards, revealedCards, resetGame } = useMemoryCard()
     return {
       names,
       openCard,
       choosedCards,
       revealedCards,
+      resetGame,
     }
   }
 })
