@@ -1,7 +1,7 @@
 <template>
 <h1 class="text-5xl text-center font-bold">Memory Game</h1>
 <div class="grid grid-cols-4 gap-4 p-8 container mx-auto">
-<card v-for="name in names" :key="name" :text="name" ></card>
+<card @choose="openCard" v-for="name, i in names" :key="name" :isOpen="openCards.includes(i)" :index="i" :text="name" ></card>
 </div>
 </template>
 
@@ -37,8 +37,12 @@ export default defineComponent({
     const firstArray: string[] = shuffle(nameArray)
     const secondArray: string[] = shuffle(nameArray)
     const names = reactive([...firstArray, ...secondArray])
+    const openCards = reactive<number[]>([])
+    const openCard = (index: number) => openCards.push(index)
     return {
-      names
+      names,
+      openCard,
+      openCards
     }
   }
 })

@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 
 export default defineComponent({
     name: 'Card',
@@ -14,13 +14,19 @@ export default defineComponent({
         text: {
             type: String,
             required: true
+        },
+        isOpen: {
+            type: Boolean,
+            default: false,
+        },
+        index: {
+            type: Number,
+            required: true,
         }
     },
-    setup() {
-        const isOpen = ref(false)
-        const handleClick = () => { isOpen.value = !isOpen.value }
+    setup(props, {emit}) {
+        const handleClick = () => emit("choose", props.index)
         return {
-            isOpen,
             handleClick
         }
     }
