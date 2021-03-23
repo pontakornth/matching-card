@@ -1,4 +1,4 @@
-import { reactive } from "vue"
+import { reactive, watch } from "vue"
 // Credit: https://stackoverflow.com/a/2450976/10978978
 function shuffle<T>(array: T[]) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -26,6 +26,16 @@ const useMemoryCards = () => {
     const choosedCards = reactive<number[]>([])
     const revealedCards = reactive<string[]>([])
     const openCard = (index: number) => choosedCards.push(index)
+    watch(choosedCards, (newValue) => {
+        console.log([...newValue])
+        if (newValue.length == 2) {
+            if (names[newValue[0]] === names[newValue[1]]) {
+                revealedCards.push(names[newValue[0]])
+                console.log(revealedCards)
+            }
+            setTimeout(() => choosedCards.splice(0, choosedCards.length), 500)
+        }
+    })
     return {
       names,
       openCard,
